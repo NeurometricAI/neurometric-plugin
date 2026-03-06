@@ -1,0 +1,30 @@
+{
+  "$schema": "./neurometric.config.schema.json",
+
+  "proxy": {
+    "port": 9999,
+    "enabled": true
+  },
+
+  "environment": "development",
+
+  "providers": {
+    "mode": "all",
+    "exclude": []
+  },
+
+  "storage": {
+    "store_raw_request": false,
+    "store_raw_response": false,
+    "content_retention": "full",
+    "retain_for_days": 90,
+    "redact_pii": true,
+    "custom_redact_patterns": []
+  },
+
+  "eval_defaults": {
+    "tags": [],
+    "eval_profile": "default",
+    "priority": "normal"
+  }
+}

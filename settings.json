@@ -1,0 +1,16 @@
+{
+  "$schema": "https://claude.ai/schemas/settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(node proxy/server.js:*)",
+      "Bash(curl *127.0.0.1*)",
+      "Bash(kill *)",
+      "Read(neurometric.config.json)",
+      "Read(.neurometric-proxy.pid)",
+      "Read(.neurometric-proxy.log)"
+    ]
+  },
+  "env": {
+    "NEUROMETRIC_INGEST_URL": "https://api.neurometric.ai/v1/ingest"
+  }
+}

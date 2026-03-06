@@ -1,0 +1,26 @@
+{
+  "name": "neurometric",
+  "version": "0.1.0",
+  "description": "Route AI API calls through Neurometric for automatic logging and evaluation",
+  "author": "Neurometric",
+  "homepage": "https://neurometric.ai",
+  "repository": "https://github.com/neurometric/claude-code-plugin",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "skills": "skills",
+  "hooks": "hooks",
+  "config": {
+    "NEUROMETRIC_API_KEY": {
+      "description": "Your Neurometric API key for authentication",
+      "required": true,
+      "secret": true
+    },
+    "PROXY_PORT": {
+      "description": "Local proxy server port",
+      "default": "9999",
+      "required": false
+    }
+  }
+}

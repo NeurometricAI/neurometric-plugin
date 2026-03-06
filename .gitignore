@@ -1,0 +1,8 @@
+# Local Claude settings
+.claude/
+
+# Logs
+*.log
+
+# Node modules (if any)
+node_modules/
