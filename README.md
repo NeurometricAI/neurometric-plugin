@@ -67,7 +67,7 @@ All point to `https://api.neurometric.ai` with your Neurometric API key.
 
 ## Links
 
-- [Neurometric Dashboard](https://app.neurometric.ai)
+- [Neurometric Dashboard](https://studio.neurometric.ai)
 - [Documentation](https://docs.neurometric.ai)
 - [Report Issues](https://github.com/neurometric/claude-code-plugin/issues)
 
