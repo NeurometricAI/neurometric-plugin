@@ -61,8 +61,6 @@ All point to `https://api.neurometric.ai` with your Neurometric API key.
 ```
 
 ## Limitations
-
-- **No streaming** — Neurometric does not support `stream: true` requests
 - **Model availability** — Only models configured on your Neurometric account are accessible
 
 ## Links
