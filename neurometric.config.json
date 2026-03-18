@@ -1,6 +1,4 @@
 {
-  "$schema": "./neurometric.config.schema.json",
-
   "proxy": {
     "port": 9999,
     "enabled": true

@@ -52,12 +52,17 @@ All point to `https://api.neurometric.ai` with your Neurometric API key.
 
 **Check status:**
 ```
-/neurometric-status
+/neurometric status
 ```
 
 **View recent captures:**
 ```
-/neurometric-replay [count]
+/neurometric replay [count]
+```
+
+**Get cost optimization recommendations:**
+```
+/neurometric optimize [--captures | --scan ./path | --describe "..."]
 ```
 
 ## Limitations

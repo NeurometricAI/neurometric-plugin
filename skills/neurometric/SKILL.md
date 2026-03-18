@@ -15,7 +15,7 @@ Unified Neurometric CLI for monitoring, replaying, and optimizing AI API usage.
 ```
 
 **Commands:**
-- `status` - Check proxy session status
+- `status` - Check gateway connection status
 - `replay [count]` - View recent API captures
 - `optimize [options]` - Get cost optimization recommendations
 
@@ -25,7 +25,7 @@ Unified Neurometric CLI for monitoring, replaying, and optimizing AI API usage.
 
 ## status
 
-Check the current Neurometric proxy session status.
+Check the current Neurometric gateway connection status.
 
 ### Usage
 
@@ -35,52 +35,62 @@ Check the current Neurometric proxy session status.
 
 ### Description
 
-Shows the current status of the Neurometric proxy, including:
-- Whether the proxy is running
-- Current session ID
-- Number of API calls captured this session
-- Total tokens processed
+Shows the current status of the Neurometric gateway connection, including:
+- Whether the environment is configured correctly
+- Connection to the Neurometric API
+- Current session information
+- Recent capture count
 
 ### Instructions
 
 When the user invokes `/neurometric status`:
 
-1. Check if the proxy is running by reading the PID file and checking the health endpoint:
+1. Check if environment variables are configured:
 
 ```bash
-PLUGIN_DIR="$(dirname "$(dirname "${BASH_SOURCE[0]}")")"
-PID_FILE="$PLUGIN_DIR/.neurometric-proxy.pid"
-PORT="${PROXY_PORT:-9999}"
-
-if [ -f "$PLUGIN_DIR/neurometric.config.json" ]; then
-  PORT=$(node -e "try{console.log(require('$PLUGIN_DIR/neurometric.config.json').proxy?.port||9999)}catch{console.log(9999)}" 2>/dev/null)
+# Check if NEUROMETRIC_API_KEY is set
+if [ -z "$NEUROMETRIC_API_KEY" ]; then
+  echo "NEUROMETRIC_API_KEY is not set"
+  exit 1
 fi
 
-curl -s "http://127.0.0.1:$PORT/health"
+# Check gateway connectivity
+curl -s -H "Authorization: Bearer $NEUROMETRIC_API_KEY" \
+  "https://api.neurometric.ai/v1/status"
 ```
 
 2. Parse and display the response in a user-friendly format:
 
-**If proxy is running**, show:
+**If connected**, show:
 ```
-Neurometric Status: Active
+Neurometric Status: Connected
 
-Session ID: <session_id>
-Captures:   <count> API calls
-Tokens:     <total_tokens> total
+API Key:    ...${NEUROMETRIC_API_KEY: -8} (last 8 chars)
+Gateway:    https://api.neurometric.ai
+Captures:   <count> API calls (last 24h)
 
-Proxy running on port <port>
+Environment variables configured for: OpenAI, Anthropic, Cohere, Mistral, Groq, Together
 ```
 
-**If proxy is not running**, show:
+**If not configured**, show:
 ```
-Neurometric Status: Inactive
+Neurometric Status: Not Configured
 
-The proxy is not running. Start a new Claude Code session to enable capture.
+NEUROMETRIC_API_KEY is not set. To enable capture:
+  export NEUROMETRIC_API_KEY="sk_live_..."
+
+Then restart your Claude Code session.
+```
+
+**If connection fails**, show:
+```
+Neurometric Status: Connection Failed
+
+Could not reach https://api.neurometric.ai
+Check your network connection and API key.
 ```
 
 3. If the user wants more details, you can also check:
-   - The log file at `.neurometric-proxy.log`
    - The config at `neurometric.config.json`
 
 ---
@@ -147,9 +157,9 @@ Latency: <latency_ms>ms
 No captures found for this session.
 
 Make sure:
-- The Neurometric proxy is running (/neurometric status)
+- NEUROMETRIC_API_KEY is set (/neurometric status)
 - You have made AI API calls in this session
-- NEUROMETRIC_API_KEY is set
+- The Neurometric gateway is reachable
 ```
 
 5. **Offer replay options**:
@@ -420,8 +430,8 @@ Alternatively, try:
 No API calls found in the last {days} days.
 
 Make sure:
-- The Neurometric proxy is running (/neurometric status)
-- You have made AI API calls through the proxy
+- NEUROMETRIC_API_KEY is set (/neurometric status)
+- You have made AI API calls through the gateway
 - Try increasing the time range: --days 30
 ```
 
@@ -452,7 +462,7 @@ Try:
 
 | Command | Description |
 |---------|-------------|
-| `/neurometric status` | Check if proxy is running |
+| `/neurometric status` | Check gateway connection |
 | `/neurometric replay` | Show last 5 captures |
 | `/neurometric replay 10` | Show last 10 captures |
 | `/neurometric optimize` | Analyze captures for savings |
