@@ -36,10 +36,8 @@ neurometric-plugin/
 │   ├── session-start.sh         # Sets env vars for Neurometric gateway
 │   └── session-end.sh           # Shows dashboard link
 ├── skills/
-│   ├── neurometric-status/
-│   │   └── SKILL.md             # /neurometric-status
-│   └── neurometric-replay/
-│       └── SKILL.md             # /neurometric-replay
+│   └── neurometric/
+│       └── SKILL.md             # /neurometric (unified CLI)
 ├── neurometric.config.json      # User config (optional)
 ├── settings.json
 ├── CLAUDE.md
@@ -79,5 +77,6 @@ claude --plugin-dir /path/to/neurometric-plugin
 
 ## Skills
 
-- `/neurometric-status` — Check if routing is active
-- `/neurometric-replay` — View recent captures from Neurometric
+- `/neurometric status` — Check if routing is active
+- `/neurometric replay [count]` — View recent captures from Neurometric
+- `/neurometric optimize [options]` — Analyze usage and get cost optimization recommendations

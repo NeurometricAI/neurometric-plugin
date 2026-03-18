@@ -4,10 +4,13 @@
     "allow": [
       "Bash(node proxy/server.js:*)",
       "Bash(curl *127.0.0.1*)",
+      "Bash(curl *api.neurometric.ai*)",
       "Bash(kill *)",
       "Read(neurometric.config.json)",
       "Read(.neurometric-proxy.pid)",
-      "Read(.neurometric-proxy.log)"
+      "Read(.neurometric-proxy.log)",
+      "Grep(*)",
+      "Read(*)"
     ]
   },
   "env": {
