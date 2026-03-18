@@ -9,6 +9,6 @@ echo "╭───────────────────────�
 echo "│         Neurometric Session End         │"
 echo "├─────────────────────────────────────────┤"
 echo "│  View your captures at:                 │"
-echo "│  https://app.neurometric.ai/dashboard   │"
+echo "│  https://studio.neurometric.ai/dashboard │"
 echo "╰─────────────────────────────────────────╯"
 echo ""
