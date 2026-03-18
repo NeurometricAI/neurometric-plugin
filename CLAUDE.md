@@ -73,7 +73,6 @@ claude --plugin-dir /path/to/neurometric-plugin
 
 ## Limitations
 
-- **No streaming** — Neurometric gateway does not support `stream: true`
 - **Model availability** — Only models on your Neurometric account work
 
 ---
