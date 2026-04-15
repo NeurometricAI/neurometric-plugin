@@ -1,0 +1,22 @@
+{
+  "name": "neurometric",
+  "owner": {
+    "name": "Neurometric",
+    "email": "support@neurometric.ai"
+  },
+  "metadata": {
+    "description": "Neurometric — automatic logging and evaluation for AI API calls",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "neurometric",
+      "source": "./",
+      "description": "Route AI API calls through Neurometric for automatic logging and evaluation",
+      "version": "0.1.0",
+      "homepage": "https://neurometric.ai",
+      "license": "MIT",
+      "keywords": ["logging", "observability", "evaluation", "llm"]
+    }
+  ]
+}

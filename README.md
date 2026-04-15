@@ -15,22 +15,43 @@ Your Code  ──▶  Neurometric Gateway  ──▶  OpenAI / Anthropic / etc
 
 ## Installation
 
-1. Clone the plugin:
+Install via the Claude Code plugin manager. Inside a Claude Code session, run:
 
-```bash
-git clone https://github.com/neurometric/claude-code-plugin ~/.claude/plugins/neurometric
+```
+/plugin marketplace add NeurometricAI/neurometric-plugin
+/plugin install neurometric@neurometric
 ```
 
-2. Set your Neurometric API key:
+Set your Neurometric API key in your shell:
 
 ```bash
 export NEUROMETRIC_API_KEY="sk_live_your-api-key"
 ```
 
-3. Start Claude Code with the plugin:
+Restart Claude Code. The plugin's `SessionStart` hook configures the gateway
+environment variables automatically on each session.
+
+### Updating
+
+```
+/plugin marketplace update neurometric
+```
+
+### Development / local testing
+
+To run from a local checkout (useful for contributors or while iterating on
+the plugin):
 
 ```bash
-claude --plugin-dir ~/.claude/plugins/neurometric
+git clone https://github.com/NeurometricAI/neurometric-plugin
+claude --plugin-dir ./neurometric-plugin
+```
+
+`--plugin-dir` can be passed multiple times to load several local plugins
+side by side:
+
+```bash
+claude --plugin-dir ./neurometric-plugin --plugin-dir /path/to/other-plugin
 ```
 
 ## What Gets Set
@@ -72,7 +93,7 @@ All point to `https://api.neurometric.ai` with your Neurometric API key.
 
 - [Neurometric Dashboard](https://studio.neurometric.ai)
 - [Documentation](https://docs.neurometric.ai)
-- [Report Issues](https://github.com/neurometric/claude-code-plugin/issues)
+- [Report Issues](https://github.com/NeurometricAI/neurometric-plugin/issues)
 
 ## License
 
